@@ -1,14 +1,26 @@
-# Welcome to your CDK TypeScript project
+# Build & deploy
 
-This is a blank project for CDK development with TypeScript.
+```
+docker run --rm -dit -p 4566:4566 -p 4571:4571 -e LOCALSTACK_HOST=localhost -v /var/run/docker.sock:/var/run/docker.sock localstack/localstack
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+npm run compile
 
-## Useful commands
+cdklocal bootstrap
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+cdklocal synth
+
+cdklocal deploy
+```
+
+# Test
+
+```
+curl -k -X POST https://bkuupxtk3l.execute-api.localhost:4566/prod/users/createUser \
+       -d '{"username": "John", "email": "test", "age": "18"}' -H "Content-Type: application/json"
+
+curl -k -X GET https://bkuupxtk3l.execute-api.localhost:4566/prod/users/getUser \
+       -d '{"username": "John" }' -H "Content-Type: application/json"
+
+curl -k -X DELETE https://bkuupxtk3l.execute-api.localhost:4566/prod/users/deleteUser \
+       -d '{"username": "John" }' -H "Content-Type: application/json" 
+```
