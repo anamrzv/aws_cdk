@@ -25,7 +25,6 @@ pipeline {
             steps {
                 dir('.') { 
                     sh 'ls'
-                    sh 'npm install'
                     sh 'npx tsc'
                 }
             }
@@ -35,7 +34,7 @@ pipeline {
             steps {
                 dir('./lambda') { 
                     sh 'ls'
-                    sh 'npm install'
+                    sh 'npm i'
                     sh 'npx tsc'
                 }
             }
