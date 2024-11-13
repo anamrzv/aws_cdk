@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git url: 'http://host.docker.internal:3000/anamrzv/aws_lambdas.git, branch: 'main' 
+                git url: 'http://host.docker.internal:3000/anamrzv/aws_lambdas.git', branch: 'main' 
             }
         }
 
