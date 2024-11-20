@@ -34,7 +34,6 @@ pipeline {
             steps {
                 dir('./lambda') { 
                     sh 'ls'
-                    sh 'npm i'
                     sh 'npx tsc'
                 }
             }
